@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 /**
 * Classe permetttant de gérer l'affichage graphique
 */
@@ -10,8 +11,6 @@ public class GuiView
 	private CounterModel m_model;
 	
 	//Composants
-	//L'arbre permettant de choisir un dossier
-	private JTree m_tree = new JTree();
 	//L'image courante
 	private ImagePanel imageCourante = new ImagePanel();	
 	//Les images suivantes
@@ -82,7 +81,7 @@ public class GuiView
 
 		JPanel panelTree = new JPanel();
 		panelTree.setPreferredSize(new Dimension(200,550));
-		panelTree.add(m_tree);
+		panelTree.add(new ArbreChemin(new File("/home")));
 		panelPrincipale.add(panelTree);
 
 /****************************Sous-Panel Gestion Image ********/
