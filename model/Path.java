@@ -4,20 +4,20 @@ import java.io.File;
 
 public class Path extends Observable {
 
-	private String path;
+	private String chemin;
 	private static String selected;
 
-	public Path(String path) {
-		this.path = path;
+	public Path(String chemin) {
+		this.chemin = chemin;
 		selected = null;
 	}
 
-	public String getPath() {
-		return path;
+	public String getChemin() {
+		return chemin;
 	}
 
-	void setPath(String path) {
-		this.path = path;
+	void setChemin(String chemin) {
+		this.chemin = chemin;
 	}
 
 	public void set(File f) {
@@ -25,16 +25,16 @@ public class Path extends Observable {
 		return;
 		selected = null;
 		if(!f.isDirectory()) {
-			if(Image.isImage(f.getName()))
+			if(ImagePanel.isImage(f.getName()))
 				selected = f.getName();
 		f = f.getParentFile();
 		}
-		setPath(f.getAbsolutePath());
+		setChemin(f.getAbsolutePath());
 		setChanged();
 		notifyObservers("path");
 	}
 
-	public static boolean isSelected(String name) {
-	return name.equals(selected);
+	public static boolean isSelected(String nom) {
+	return nom.equals(selected);
 	}
 }
