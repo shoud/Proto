@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+import java.util.Observable;
 
-public class ImagePanel extends JPanel
+public class ImagePanel extends Observable
 {
 	private String nom = null;
 	private String chemin = null;
@@ -61,10 +61,4 @@ public class ImagePanel extends JPanel
 		return false;
 	}
 
-	@Override
-    	protected void paintComponent(Graphics graphique)
-	{
-        	super.paintComponent(graphique);
-        	graphique.drawImage(image, 0, 0, null);            
-   	 }
 }

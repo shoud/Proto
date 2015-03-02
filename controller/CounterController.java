@@ -1,12 +1,14 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import model.CounterModel;
 import view.GuiView;
 
 /**
 * Classe permettant de gérer l'application
 */
-public class CounterController 
+public class CounterController implements ActionListener 
 {
 	//Le model de l'application
 	private CounterModel m_model;
@@ -47,6 +49,9 @@ public class CounterController
 	*/
 	public void setTagImageCourante(String tag)
 	{
+
+	}
+	public void actionPerformed(ActionEvent e) {
 
 	} 
 }

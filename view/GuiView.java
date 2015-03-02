@@ -13,7 +13,7 @@ import controller.CounterController;
 /**
 * Classe permetttant de gérer l'affichage graphique
 */
-public class GuiView
+public class GuiView implements Observer
 {
 	private CounterModel m_model;
 	
@@ -133,13 +133,14 @@ public class GuiView
 			image02 = new Miniature("/rsc/default.gif",200,200);
 			image03 = new Miniature("/rsc/default.gif",200,200);
 			image04 = new Miniature("/rsc/default.gif",200,200);
+			imageCourante.set(image01);
 		}catch(Exception e){
 
 		}
-		//panelImageSuiv.add(image01);
-		//panelImageSuiv.add(image02);
-		//panelImageSuiv.add(image03);
-		//panelImageSuiv.add(image04);
+		panelImageSuiv.add(image01);
+		/*panelImageSuiv.add(image02);
+		panelImageSuiv.add(image03);
+		panelImageSuiv.add(image04);*/
 		panelImageSuiv.add(btPrecedent);
 		//Rajout des quatres images dans image
 		panelImage.add(panelImageSuiv);
@@ -164,9 +165,19 @@ public class GuiView
 		frame.setVisible(true);
 		
 	}
+	/**
+	* Permet de rajouter des évènements
+	*/
 	public void addListenersToView(CounterController cont)
 	{
 		//exemple pour rajouter un bouton du cour
 		//m_incBtn.addActionListener(cont);
+	}
+	public void update(Observable o, Object arg)
+	{
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+			}
+		});
 	}
 }

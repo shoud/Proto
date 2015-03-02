@@ -5,10 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import javax.swing.JPanel;
 
 
-public class Miniature extends JPanel{
+public class Miniature {
 
 	private String nom;
 	private BufferedImage original;
