@@ -7,6 +7,8 @@ import java.awt.event.*;
 import java.io.File;
 
 import model.CounterModel;
+import model.Miniature;
+import model.ImagePanel;
 import controller.CounterController;
 /**
 * Classe permetttant de gérer l'affichage graphique
@@ -19,10 +21,10 @@ public class GuiView
 	//L'image courante
 	private ImagePanel imageCourante = new ImagePanel();	
 	//Les images suivantes
-	private ImagePanel image01 = new ImagePanel();
-	private ImagePanel image02 = new ImagePanel();
-	private ImagePanel image03 = new ImagePanel();
-	private ImagePanel image04 = new ImagePanel();
+	private Miniature image01 = new Miniature("/rsc/default.gif",200,200);
+	private Miniature image01 = new Miniature("/rsc/default.gif",200,200);
+	private Miniature image01 = new Miniature("/rsc/default.gif",200,200);
+	private Miniature image01 = new Miniature("/rsc/default.gif",200,200);
 	//Bouton pour suivant et precedent pour les 4 images
 	private JButton btSuivant = new JButton("<-"); 
 	private JButton btPrecedent = new JButton("->");
@@ -125,10 +127,6 @@ public class GuiView
 		panelImageSuiv.setLayout(new BoxLayout(panelImageSuiv, BoxLayout.LINE_AXIS));
 		panelImageSuiv.setPreferredSize(new Dimension(600,200));
 		panelImageSuiv.add(btSuivant);
-		image01.setPreferredSize(new Dimension(50,20));
-		image02.setPreferredSize(new Dimension(50,20));
-		image03.setPreferredSize(new Dimension(50,20));
-		image04.setPreferredSize(new Dimension(50,20));
 		panelImageSuiv.add(image01);
 		panelImageSuiv.add(image02);
 		panelImageSuiv.add(image03);
