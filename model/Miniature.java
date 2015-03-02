@@ -14,23 +14,23 @@ public class Miniature{
 	private final String chemin;
 	private ImageIcon image;
 
-	public Miniature(String chemin, int maxWidth, int maxHeight) throw Exception{
+	public Miniature(String chemin, int maxWidth, int maxHeight) throws Exception{
 		this.chemin = chemin;
 		Path p = Paths.get(chemin);
 		nom = p.getFileName().toString();
 
 		original = ImageIO.read(new File(chemin));
-		if(original	== null) throw new Exception(chemin + ": Ne fichier n'a pas pu être ouvert."):
+		if(original	== null) throw new Exception(chemin + ": Ne fichier n'a pas pu être ouvert.");
 
 		int imgWidth = original.getWidth();
 		int imgHeight = original.getHeight();
 
 		double maxRatio = (double)maxWidth / maxHeight;
 		double imgRatio = (double)imgWidth / imgHeight;
-		double echelle = (imgRatio > maxRatio ? (double)maxWidth / imgWidth : (double)maxHeight/imgHeight;
+		double echelle = (imgRatio > maxRatio ? (double)maxWidth / imgWidth : (double)maxHeight/imgHeight);
 
-		int finalWidth = (int)(imgWidth * scale);
-		int finalHeight = (int)(imgHeight * scale);
+		int finalWidth = (int)(imgWidth * echelle);
+		int finalHeight = (int)(imgHeight * echelle);
 
 
 		image = new ImageIcon(original.getScaledInstance(finalWidth, finalHeight, java.awt.Image.SCALE_FAST));
@@ -39,13 +39,13 @@ public class Miniature{
 
 	public String getNom()
 	{
-		return Nom;
+		return nom;
 	}
-	public void setNom(String Nom) {
-		this.Nom = Nom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	public String getChemin() {
-		return Chemin;
+		return chemin;
 	}
 	public ImageIcon getImage()
 	{

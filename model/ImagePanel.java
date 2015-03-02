@@ -34,7 +34,7 @@ public class ImagePanel extends JPanel
 	public void set(Miniature m){
 		nom = m.getNom();
 		chemin = m.getChemin();
-		image = m.getImage();
+		image = m.getOriginalImage();
 	}
 	public int getWidth() {
 		return (image != null ? image.getWidth() : 0);
@@ -47,7 +47,7 @@ public class ImagePanel extends JPanel
 	public static boolean isImage( String chemin ){
 		String extension = null;
 		int pos = chemin.lastIndexOf('.');
-		if(pos>0 && pos<chemin.length(à-1){
+		if(pos>0 && pos<chemin.length()-1){
 			extension = chemin.substring(pos+1).toLowerCase();
 		}
 		if(extension != null){
