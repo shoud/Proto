@@ -1,3 +1,7 @@
+import controller.CounterController;
+import model.CounterModel;
+import view.GuiView;
+
 /**
 * Classe permettant de lancer le programme 
 */
