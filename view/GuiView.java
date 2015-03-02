@@ -21,17 +21,10 @@ public class GuiView
 	//L'image courante
 	private ImagePanel imageCourante = new ImagePanel();	
 	//Les images suivantes
-<<<<<<< HEAD
 	private Miniature image01;
 	private Miniature image02;
 	private Miniature image03;
 	private Miniature image04;
-=======
-	private Miniature image01 = new Miniature("/rsc/default.gif",200,200);
-	private Miniature image02 = new Miniature("/rsc/default.gif",200,200);
-	private Miniature image03 = new Miniature("/rsc/default.gif",200,200);
-	private Miniature image04 = new Miniature("/rsc/default.gif",200,200);
->>>>>>> b8c6fd3c5ac809fdc9536a2d36caa26986b1e2c0
 	//Bouton pour suivant et precedent pour les 4 images
 	private JButton btSuivant = new JButton("<-"); 
 	private JButton btPrecedent = new JButton("->");
