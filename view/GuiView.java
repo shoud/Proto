@@ -9,6 +9,7 @@ import java.io.File;
 import model.CounterModel;
 import model.Miniature;
 import model.ImagePanel;
+import model.PImage;
 import controller.CounterController;
 /**
 * Classe permetttant de gérer l'affichage graphique
@@ -21,10 +22,10 @@ public class GuiView implements Observer
 	//L'image courante
 	private ImagePanel imageCourante = new ImagePanel();	
 	//Les images suivantes
-	private Miniature image01;
+	/*private Miniature image01;
 	private Miniature image02;
 	private Miniature image03;
-	private Miniature image04;
+	private Miniature image04;*/
 	//Bouton pour suivant et precedent pour les 4 images
 	private JButton btSuivant = new JButton("<-"); 
 	private JButton btPrecedent = new JButton("->");
@@ -37,6 +38,15 @@ public class GuiView implements Observer
 	//Pour choisir la langue du programme
 	private String[] items = {"Français", "English", "中国"};
 	private JComboBox m_choixLangue = new JComboBox(items);
+
+	//ZONE TEST POUR IMAGE
+	private PImage ip = new PImage(); 
+	private PImage image01 = new PImage();
+	private PImage image02 = new PImage();
+	private PImage image03 = new PImage();
+	private PImage image04 = new PImage();
+
+
 	/**
 	* Conttructeur de GuiView 
 	* Permet de créer l'interface graphique
@@ -45,7 +55,7 @@ public class GuiView implements Observer
 	public GuiView(CounterModel m)
 	{
 		m_model = m;
-		//m.addObserver(this);
+		m.addObserver(this);
 		SwingUtilities.invokeLater(new Runnable()
 		{
 			public void run()
@@ -67,9 +77,8 @@ public class GuiView implements Observer
 		JFrame frame = new JFrame();
 		//Creation du panel général
 		JPanel panel = new JPanel();
-		//On utilise le panel générale comme une box
+		//On utilise le panel générale comme une box (BorderLayout)
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-	
 /*******************************************PANEL Recherche et Langue ***********************************************/
 
 		//On creer le panel du haut, permettant de faire une recherche et de changer la langue
@@ -102,8 +111,8 @@ public class GuiView implements Observer
 		panelImageCourante.setPreferredSize(new Dimension(600,350));
 /** Visualisation image courante */
 	
-		imageCourante.setPreferredSize(new Dimension(400,350));
-		panelImageCourante.add(imageCourante);
+		//imageCourante.setPreferredSize(new Dimension(400,350));
+		panelImageCourante.add(ip.getImage());
 
 /** Panel Modification Text/MotCle */
 
@@ -127,20 +136,10 @@ public class GuiView implements Observer
 		panelImageSuiv.setLayout(new BoxLayout(panelImageSuiv, BoxLayout.LINE_AXIS));
 		panelImageSuiv.setPreferredSize(new Dimension(600,200));
 		panelImageSuiv.add(btSuivant);
-		try
-		{
-			image01 = new Miniature("/rsc/default.gif",200,200);
-			image02 = new Miniature("/rsc/default.gif",200,200);
-			image03 = new Miniature("/rsc/default.gif",200,200);
-			image04 = new Miniature("/rsc/default.gif",200,200);
-			imageCourante.set(image01);
-		}catch(Exception e){
-
-		}
-		panelImageSuiv.add(image01);
-		/*panelImageSuiv.add(image02);
-		panelImageSuiv.add(image03);
-		panelImageSuiv.add(image04);*/
+		panelImageSuiv.add(image01.getImage());
+		panelImageSuiv.add(image02.getImage());
+		panelImageSuiv.add(image03.getImage());
+		panelImageSuiv.add(image04.getImage());
 		panelImageSuiv.add(btPrecedent);
 		//Rajout des quatres images dans image
 		panelImage.add(panelImageSuiv);
@@ -170,14 +169,21 @@ public class GuiView implements Observer
 	*/
 	public void addListenersToView(CounterController cont)
 	{
-		//exemple pour rajouter un bouton du cour
-		//m_incBtn.addActionListener(cont);
+		//Rajouter des actions au controller
+		btSuivant.addActionListener(cont);
 	}
 	public void update(Observable o, Object arg)
 	{
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
+		SwingUtilities.invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				m_textTitreImage.setText(""+ m_model.getValeur());			
 			}
 		});
+	}
+	public JButton getIncBtn()
+	{
+		return btSuivant;
 	}
 }

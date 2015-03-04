@@ -30,28 +30,9 @@ public class CounterController implements ActionListener
 		m_view = v;
 		v.addListenersToView(this);
 	}
-	/**
-	* Permet de mettre à jour l'image courante
-	*/
-	public void setImageCourante()
+	public void actionPerformed(ActionEvent e)
 	{
-
-	}
-	/**
-	* Permet de modifier le nom de l'image courante
-	*/
-	public void setNameImageCourante(String nom)
-	{
-
-	}
-	/**
-	* Permet de modifier les tags de l'image courante
-	*/
-	public void setTagImageCourante(String tag)
-	{
-
-	}
-	public void actionPerformed(ActionEvent e) {
-
+		if(e.getSource() == m_view.getIncBtn())
+			m_model.incValue();
 	} 
 }
